@@ -1,0 +1,23 @@
+{
+  "name": "react-typescript",
+  "version": "1.0.0",
+  "description": "A quick tutorial on react-typescript",
+  "main": "index.js",
+  "dependencies": {
+    "create-react-app": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BoyanK95/react-typescript.git"
+  },
+  "author": "Boyan Koychev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BoyanK95/react-typescript/issues"
+  },
+  "homepage": "https://github.com/BoyanK95/react-typescript#readme"
+}
