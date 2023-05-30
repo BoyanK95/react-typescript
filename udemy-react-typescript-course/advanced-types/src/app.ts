@@ -45,6 +45,6 @@ function add(a: Combinable, b: Combinable) {
 type UnkownEmployee = Employee | Admin
 
 function printEmplyeeInformation(emp:UnkownEmployee) {
-    console.log('Name');
+    console.log('Name ', emp);
     
 }
