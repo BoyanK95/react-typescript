@@ -10,6 +10,8 @@ function add(a, b) {
     }
     return a + b;
 }
+const resultNumber = add(1, 1);
+const resultString = add('Tom', 'Jerry');
 function printEmplyeeInformation(emp) {
     console.log('Name: ', emp.name);
     if ('privileges' in emp) {
@@ -55,4 +57,11 @@ function moveAnimal(animal) {
     console.log('Moving at speed: ' + speed);
 }
 moveAnimal({ type: 'bird', flyingSpeed: 55 });
+const paragraph = document.getElementById('message-output');
+const inputEl = document.getElementById('user-input');
+inputEl.value = 'Hi there !';
+const errorBag = {
+    email: 'Not  a valid email!',
+    username: 'Must start with a capital character!'
+};
 //# sourceMappingURL=app.js.map
