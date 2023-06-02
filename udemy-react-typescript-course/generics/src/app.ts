@@ -24,4 +24,17 @@ function merge<T extends object, U>(objA: T, objB: U) {
 // console.log(merge({ firstName: 'Boyan' }, { age: 29 }));
 
 const mergedObj = merge({ firstName: 'David', hobbies: ['Eating, Sleeping'] }, { age: 23 });
-console.log(mergedObj.hobbies);
+// console.log(mergedObj.hobbies);
+
+function extractAndConvert<T extends object, U extends keyof T>(obj:T, key: U) {
+    return 'Value of ' + obj[key]
+}
+
+const personOne = {
+    name: 'Boyan',
+    age: 29,
+    degree: true,
+    profesion: 'software engeener trainee'
+}
+
+console.log(extractAndConvert(personOne, 'age'))
