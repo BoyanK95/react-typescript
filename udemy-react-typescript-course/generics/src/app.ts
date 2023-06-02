@@ -26,8 +26,8 @@ function merge<T extends object, U>(objA: T, objB: U) {
 const mergedObj = merge({ firstName: 'David', hobbies: ['Eating, Sleeping'] }, { age: 23 });
 // console.log(mergedObj.hobbies);
 
-function extractAndConvert<T extends object, U extends keyof T>(obj:T, key: U) {
-    return 'Value of ' + obj[key]
+function extractAndConvert<T extends object, U extends keyof T>(obj: T, key: U) {
+    return 'Value of ' + obj[key];
 }
 
 const personOne = {
@@ -35,6 +35,38 @@ const personOne = {
     age: 29,
     degree: true,
     profesion: 'software engeener trainee'
+};
+
+console.log(extractAndConvert(personOne, 'age'));
+
+class DataStorage<T> {
+    private data: T[] = [];
+
+    addItem(item: T) {
+        this.data.push(item);
+    }
+
+    removeItem(item: T) {
+        if (this.data.indexOf(item) === -1) {
+            return;
+        }
+        this.data.splice(this.data.indexOf(item), 1);
+    }
+
+    getItems() {
+        return [...this.data];
+    }
 }
 
-console.log(extractAndConvert(personOne, 'age'))
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Boko');
+textStorage.addItem('DVD');
+console.log(textStorage.getItems());
+
+const numberStorage = new DataStorage<number>();
+numberStorage.addItem(1);
+numberStorage.addItem(1);
+numberStorage.addItem(2);
+numberStorage.addItem(3);
+numberStorage.addItem(5);
+console.log('Number storage containes: ' + numberStorage.getItems());
