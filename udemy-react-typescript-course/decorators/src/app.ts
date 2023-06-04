@@ -1,9 +1,23 @@
-function Logger(constructor: Function) {
-    console.log('Logging...');
-    console.log(constructor);
+function Logger(logString: string) {
+    return function (constructor: Function) {
+        console.log(logString);
+        console.log(constructor);
+    }
 }
 
-@Logger
+function WithTemplade(template:string, hookId: string) {
+    return function (_:Function) {
+        const hookEl = document.getElementById(hookId)
+        if (hookEl) {
+            hookEl.innerHTML =  template
+        }
+    }
+}
+
+
+
+// @Logger('LOGGING - PERSON')
+@WithTemplade('<h1>My template object</h1>', 'app')
 class Person {
     name = 'Max';
 
