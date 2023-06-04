@@ -97,3 +97,40 @@ const p = new Printer();
 
 const btn = document.querySelector('button');
 btn?.addEventListener('click', p.showMessage);
+
+// Validation with Decorators section
+function Required(params:type) {
+    
+}
+
+function PositiveNumber(params:type) {
+    
+}
+
+function validate(obj:object) {
+    
+}
+
+class Course {
+    title: string;
+    price: number
+
+    constructor(t: string, p: number) {
+        this.title = t;
+        this.price = p
+    }
+}
+
+const formEl = document.querySelector('form')
+
+formEl?.addEventListener('submit', e => {
+    e.preventDefault()
+    const titleEl = document.getElementById('title') as HTMLInputElement
+    const priceEl = document.getElementById('price') as HTMLInputElement
+
+    const title = titleEl. value
+    const price = +priceEl. value
+
+    const createdCourse = new Course(title, price)
+    console.log(createdCourse);
+})
