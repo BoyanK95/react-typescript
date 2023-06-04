@@ -27,20 +27,19 @@ class Person {
 const pers = new Person();
 console.log(pers);
 
-function Log(target:any, propertyName: string | Symbol) {
+function Log(target: any, propertyName: string | Symbol) {
     console.log('Property decorator!');
     console.log(target, propertyName);
-    
 }
 
-function Log2(target:any, name: string | Symbol, descriptor: PropertyDescriptor) {
+function Log2(target: any, name: string | Symbol, descriptor: PropertyDescriptor) {
     console.log('Accessor decorator!');
     console.log(target);
     console.log(name);
     console.log(descriptor);
 }
 
-function Log3(target:any, name: string | Symbol, descriptor: PropertyDescriptor) {
+function Log3(target: any, name: string | Symbol, descriptor: PropertyDescriptor) {
     console.log('Method decorator!');
     console.log(target);
     console.log(name);
@@ -57,7 +56,7 @@ class Product {
         if (val > 0) {
             this._price = val;
         } else {
-            throw new Error('Invalid price - should be negative!')
+            throw new Error('Invalid price - should be negative!');
         }
     }
 
@@ -72,4 +71,29 @@ class Product {
     }
 }
 
+function Authobind(_: any, _2: string, descriptor: PropertyDescriptor) {
+    const originalMethod = descriptor.value;
+    const adjDescriptor: PropertyDescriptor = {
+        configurable: true,
+        enumerable: false,
+        get() {
+            const boundFn = originalMethod.bind(this);
+            return boundFn
+        }
+    };
+    return adjDescriptor
+}
 
+class Printer {
+    message = 'This works!';
+
+    @Authobind
+    showMessage() {
+        console.log(this.message);
+    }
+}
+
+const p = new Printer();
+
+const btn = document.querySelector('button');
+btn?.addEventListener('click', p.showMessage);
